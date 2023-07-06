@@ -1,6 +1,6 @@
 const hp = 'https://konomi.app/';
 const commonCdn = 'https://cdn.jsdelivr.net/gh/local-bias/kintone-cdn@latest';
-const cdn = 'https://cdn.jsdelivr.net/gh/local-bias/kintone-plugin-template@latest';
+const cdn = 'https://cdn.jsdelivr.net/gh/local-bias/kintone-plugin-prevent-all-edits@latest';
 const localhost = 'https://127.0.0.1:5500';
 
 /** @type {import('./src/types/plugin-config').PluginConfig} */
@@ -12,7 +12,7 @@ export default {
       type: 'APP',
       name: {
         en: 'kintone-plugin-template',
-        ja: 'プラグインテンプレート',
+        ja: '絶対に入力させないプラグイン',
         zh: '插件模板',
       },
       description: {
