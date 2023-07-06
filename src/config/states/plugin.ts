@@ -48,14 +48,14 @@ export const conditionState = selectorFamily<kintone.plugin.Condition | null, nu
     },
 });
 
-export const fieldsState = selector<string[]>({
-  key: `${PREFIX}fieldsState`,
+export const fieldState = selector<string>({
+  key: `${PREFIX}fieldState`,
   get: ({ get }) => {
     const conditionIndex = get(tabIndexState);
     return getConditionField(get(storageState), {
       conditionIndex,
-      key: 'fields',
-      defaultValue: [''],
+      key: 'field',
+      defaultValue: '',
     });
   },
   set: ({ get, set }, newValue) => {
@@ -63,8 +63,30 @@ export const fieldsState = selector<string[]>({
     set(storageState, (current) =>
       getUpdatedStorage(current, {
         conditionIndex,
-        key: 'fields',
-        value: newValue as string[],
+        key: 'field',
+        value: newValue as string,
+      })
+    );
+  },
+});
+
+export const targetViewsState = selector<kintone.plugin.EventType[]>({
+  key: `${PREFIX}targetViewsState`,
+  get: ({ get }) => {
+    const conditionIndex = get(tabIndexState);
+    return getConditionField(get(storageState), {
+      conditionIndex,
+      key: 'targetEvents',
+      defaultValue: [],
+    });
+  },
+  set: ({ get, set }, newValue) => {
+    const conditionIndex = get(tabIndexState);
+    set(storageState, (current) =>
+      getUpdatedStorage(current, {
+        conditionIndex,
+        key: 'targetEvents',
+        value: newValue as kintone.plugin.EventType[],
       })
     );
   },
